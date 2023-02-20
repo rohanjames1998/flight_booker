@@ -1,7 +1,7 @@
 class Flight < ApplicationRecord
-  belongs_to :arrival_airport, class_name: :airport
-  belongs_to :departure_airport, class_name: :airport
+  belongs_to :arrival_airport, class_name: "Airport"
+  belongs_to :departure_airport, class_name: "Airport"
 
-  # validates :duration, presence: true, time
-  # validates :departure_time, presence: true, time
+  validates :duration, presence: true
+  validates :departure_time, presence: true
 end
