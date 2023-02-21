@@ -1,0 +1,13 @@
+<h1>Flight Booker</h1>
+
+<%= form_with model: @flights, url: "/flights", method: :get do |f| %>
+  <%= f.label :destination_airport_id, "Destination" %><br />
+  <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options)) %><br />
+  <%= f.label :departure_airport_id, "From" %><br />
+  <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options)) %><br />
+  <%= f.label :passengers, "Number Of Passengers"%><br />
+  <%= f.select :passengers, options_for_select(1..4)%><br />
+  <%= f.label :departure_date, "Departure Date"%><br />
+  <%= f.select :departure_date, options_for_select(@departure_date)%><br />
+  <%= f.submit "Search" %>
+<% end %>
