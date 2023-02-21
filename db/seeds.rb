@@ -1,4 +1,8 @@
-#To make fresh models when we run rails db:seed
+# To make fresh models when we run rails db:seed
+# Remember to reset primary key (:id) of airport
+# From rails console to reset primary keys for airport, else flights won't be created
+# ActiveRecord::Base.connection.execute("DELETE from sqlite_sequence where name = '<table_name>'") 
+
 Airport.delete_all
 Flight.delete_all
 
