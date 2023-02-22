@@ -11,3 +11,10 @@
   <%= f.select :departure_date, options_for_select(@departure_date)%><br />
   <%= f.submit "Search" %>
 <% end %>
+
+<% if @available_flights.present? %>
+  <%= form_with url: "/flights", method: :get do |f| %>
+    <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
+    <%= f.submit "Select Flight"%>
+  <% end %>
+<% end %>
