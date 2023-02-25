@@ -12,8 +12,13 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_path(@booking)
     else
+      #Passing flight id to display flight details when page reloads.
       render :new, status: :unprocessable_entity, flight_id: @flight.id
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   private
