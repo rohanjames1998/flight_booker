@@ -13,7 +13,7 @@
 <% end %>
 
 <% if @available_flights.present? %>
-  <%= form_with url: "/flights", method: :get do |f| %>
+  <%= form_with url: new_booking_path, method: :get do |f| %>
     <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
     <%= f.hidden_field :passengers, value: params[:flight][:passengers]%>
     <%= f.submit "Select Flight"%>
