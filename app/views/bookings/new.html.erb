@@ -1,5 +1,34 @@
-<p>
-  <%= @flight.flight_details %>
-</p>
+<% if @booking.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@booking.errors.count, "error") %> occured while creating your booking
+    </h2>
+    <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
+<h1> Flight Details </h1>
+<p> <%= @flight.flight_details  %> </p>
+
+<h1>Passenger Details</h1>
+  <p> Please enter details for each passenger </p>
+
+<%= form_with model: @booking do |f| %>
+  <%= f.hidden_field :flight_id, value: @flight.id %>
+  <div>
+    <%= f.fields_for :passengers do |passenger_f|%>
+      <h2>Passenger #<%= passenger_f.index + 1 %></h2>
+      <%= passenger_f.label :name %>
+      <%= passenger_f.text_field :name %>
+      <%= passenger_f.label :email %>
+      <%= passenger_f.text_field :email %><br />
+    <% end %>
+  </div>
+  <br />
+    <%= f.submit "Submit Details" %>
+<% end %>
 
