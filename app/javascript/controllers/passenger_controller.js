@@ -12,6 +12,6 @@ export default class extends Controller {
     const parentDiv = this.parentDivTarget;
     // Cloning form content in order to add more than one if needed.
     const clone = passengerForm.content.cloneNode(true);
-    parentDiv.appendChild(clone);
+    parentDiv.insertBefore(clone, parentDiv.firstChild);
   }
 }
