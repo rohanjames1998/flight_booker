@@ -1,10 +1,17 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  // static targets = [ 'test' ]
+  static targets = [ 'passengerForm', 'parentDiv' ]
 
   connect() {
-    console.log('Hello from passenger_controller.js')
-    // console.log(this.testTarget)
+    this.addMore();
+  }
+
+  addMore() {
+    const passengerForm = this.passengerFormTarget;
+    const parentDiv = this.parentDivTarget;
+    // Cloning form content in order to add more than one if needed.
+    const clone = passengerForm.content.cloneNode(true);
+    parentDiv.appendChild(clone);
   }
 }
