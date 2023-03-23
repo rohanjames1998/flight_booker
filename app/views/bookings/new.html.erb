@@ -21,7 +21,7 @@
   <%= f.hidden_field :flight_id, value: @flight.id %>
   <div data-controller="passenger" data-passenger-target="parentDiv">
     <template data-passenger-target="passengerForm">
-      <%= f.fields_for :passengers do |passenger_f|%>
+      <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
         <%= field_set_tag "Passenger details" do%>
           <%= passenger_f.label :name %>
           <%= passenger_f.text_field :name %>
@@ -30,7 +30,7 @@
         <% end %>
       <% end %>
     </template> <br>
-    <button type="button" data-action="passenger#addMore">Add Passenger</button>
+    <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }%>
   </div>
   <br />
     <%= f.submit "Submit Details" %>

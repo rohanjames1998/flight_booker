@@ -5,8 +5,6 @@
   <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options)) %><br />
   <%= f.label :departure_airport_id, "From" %><br />
   <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options)) %><br />
-  <%= f.label :passengers, "Number Of Passengers"%><br />
-  <%= f.select :passengers, options_for_select(1..4)%><br />
   <%= f.label :departure_date, "Departure Date"%><br />
   <%= f.select :departure_date, options_for_select(@departure_date)%><br />
   <%= f.submit "Search" %>
@@ -15,7 +13,6 @@
 <% if @available_flights.present? %>
   <%= form_with url: new_booking_path, method: :get do |f| %>
     <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
-    <%= f.hidden_field :passengers, value: params[:flight][:passengers]%>
     <%= f.submit "Select Flight"%>
   <% end %>
 <% end %>
