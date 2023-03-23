@@ -19,10 +19,12 @@
 
 <%= form_with model: @booking do |f| %>
   <%= f.hidden_field :flight_id, value: @flight.id %>
-  <div data-controller="passenger" data-passenger-target="parentDiv">
+  <div data-controller="passenger" data-passenger-target="parentDiv" id="parent-div">
+    <div data-passenger-target="passengerAdditionWarning"></div>
+    <div data-passenger-target="passengerRemovalWarning"></div>
     <template data-passenger-target="passengerForm">
       <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
-        <%= field_set_tag "Passenger details", id: "passenger-form" do%>
+        <%= field_set_tag "Passenger details" do%>
           <%= passenger_f.label :name %>
           <%= passenger_f.text_field :name %>
           <%= passenger_f.label :email %>
