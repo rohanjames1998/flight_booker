@@ -22,11 +22,13 @@
   <div data-controller="passenger" data-passenger-target="parentDiv">
     <template data-passenger-target="passengerForm">
       <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
-        <%= field_set_tag "Passenger details" do%>
+        <%= field_set_tag "Passenger details", id: "passenger-form" do%>
           <%= passenger_f.label :name %>
           <%= passenger_f.text_field :name %>
           <%= passenger_f.label :email %>
           <%= passenger_f.text_field :email %>
+          <%= passenger_f.hidden_field :_destroy%>
+          <%= button_tag "Remove Passenger", type: "button", data: { action: "passenger#removePassenger" }%>
         <% end %>
       <% end %>
     </template> <br>

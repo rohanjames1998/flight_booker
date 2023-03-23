@@ -13,4 +13,10 @@ export default class extends Controller {
     const parentDiv = this.parentDivTarget;
     parentDiv.insertAdjacentHTML('beforeend', passengerForm);
   }
+
+  removePassenger(e){
+    const passenger = e.target.closest("#passenger-form");
+    passenger.querySelector("input[name*='_destroy']").value = 1
+    passenger.hidden = true;
+  }
 }
