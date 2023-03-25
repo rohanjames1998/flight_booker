@@ -1,14 +1,19 @@
 <div class="flex flex-col h-screen">
-  <section class="flex flex-col justify-evenly items-center  flex-auto h-2/4 bg-slate-400">
-    <h1 class="self-start mb-44" >Flight Booker</h1>
-
-    <%= form_with model: @flights, url: "/flights", method: :get do |f| %>
+  <section class="flex flex-col justify-between items-center  flex-auto h-2/4 bg-slate-400">
+    <h1 class="self-start mt-9 ml-4 text-4xl" >Flight Booker</h1>
+    <%= form_with model: @flights, url: "/flights", method: :get, class:"flex w-full justify-around mb-5 " do |f| %>
+      <div>
       <%= f.label :destination_airport_id, "Destination" %>
       <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options)) %>
+      </div>
+      <div>
       <%= f.label :departure_airport_id, "From" %>
       <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options)) %>
+      </div>
+      <div>
       <%= f.label :departure_date, "Departure Date"%>
       <%= f.select :departure_date, options_for_select(@departure_date)%>
+      </div>
       <%= f.submit "Search" %>
     <% end %>
   </section>
