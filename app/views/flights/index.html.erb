@@ -1,18 +1,23 @@
-<h1>Flight Booker</h1>
+<div class="flex flex-col h-screen">
+  <section class="flex flex-col justify-evenly items-center  flex-auto h-2/4 bg-slate-400">
+    <h1 class="self-start mb-44" >Flight Booker</h1>
 
-<%= form_with model: @flights, url: "/flights", method: :get do |f| %>
-  <%= f.label :destination_airport_id, "Destination" %><br />
-  <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options)) %><br />
-  <%= f.label :departure_airport_id, "From" %><br />
-  <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options)) %><br />
-  <%= f.label :departure_date, "Departure Date"%><br />
-  <%= f.select :departure_date, options_for_select(@departure_date)%><br />
-  <%= f.submit "Search" %>
-<% end %>
-
-<% if @available_flights.present? %>
-  <%= form_with url: new_booking_path, method: :get do |f| %>
-    <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
-    <%= f.submit "Select Flight"%>
-  <% end %>
-<% end %>
+    <%= form_with model: @flights, url: "/flights", method: :get do |f| %>
+      <%= f.label :destination_airport_id, "Destination" %>
+      <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options)) %>
+      <%= f.label :departure_airport_id, "From" %>
+      <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options)) %>
+      <%= f.label :departure_date, "Departure Date"%>
+      <%= f.select :departure_date, options_for_select(@departure_date)%>
+      <%= f.submit "Search" %>
+    <% end %>
+  </section>
+  <section class="h-2/4 flex-auto bg-slate-600">
+    <% if @available_flights.present? %>
+      <%= form_with url: new_booking_path, method: :get do |f| %>
+        <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
+        <%= f.submit "Select Flight"%>
+      <% end %>
+    <% end %>
+  </section>
+</div>
