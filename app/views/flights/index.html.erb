@@ -1,10 +1,10 @@
 <div class="flex flex-col h-screen">
-  <section class="flex flex-col justify-between items-center  flex-auto h-2/4 bg-slate-400">
-    <h1 class="self-start mt-9 ml-4 text-4xl" >Flight Booker</h1>
-    <%= form_with model: @flights, url: "/flights", method: :get, class:"flex w-full justify-around mb-5 " do |f| %>
+  <section class="flex flex-col justify-between items-center  flex-auto h-3/4 bg-gradient-to-b from-DARK_OCEAN_BLUE to-LIGHT_OCEAN_BLUE">
+    <h1 class="mt-9 ml-4 text-4xl font-sans self-center text-white" >Flight Booker</h1>
+    <%= form_with model: @flights, url: "/flights", method: :get, class:"flex w-2/3 h-52 mb-16 justify-around items-center bg-white " do |f| %>
       <div>
       <%= f.label :destination_airport_id, "Destination" %>
-      <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options)) %>
+      <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options), {}, class: "appearance-none bg-slate-400  border-0 border-b-2 rounded border-white")%>
       </div>
       <div>
       <%= f.label :departure_airport_id, "From" %>
@@ -17,7 +17,7 @@
       <%= f.submit "Search" %>
     <% end %>
   </section>
-  <section class="h-2/4 flex-auto bg-slate-600">
+  <section class="h-2/4 flex-auto bg-gradient-to-b from-sky-200 to-sky-50">
     <% if @available_flights.present? %>
       <%= form_with url: new_booking_path, method: :get do |f| %>
         <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
