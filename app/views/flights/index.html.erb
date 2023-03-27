@@ -1,18 +1,29 @@
 <div class="flex flex-col h-screen">
   <section class="flex flex-col justify-between items-center  flex-auto h-3/4 bg-gradient-to-b from-DARK_OCEAN_BLUE to-LIGHT_OCEAN_BLUE">
-    <h1 class="mt-9 ml-4 text-4xl font-sans self-center text-white" >Flight Booker</h1>
+    <h1 class="mt-9 -ml-28 text-4xl font-sans self-center text-white">
+    Flight
+    <span class="relative">
+      <span class="block absolute top-1 left-2 bg-rose-700 pr-1 rounded">
+        <span class="relative">
+          <em>Booker</em>
+        </span>
+      </span>
+    </span>
+    </h1>
     <%= form_with model: @flights, url: "/flights", method: :get, class:"flex w-2/3 h-52 mb-16 rounded-lg justify-around items-center bg-white relative" do |f| %>
       <div class="flex flex-col flex-1 justify-items-center gap-2 h-full items-center">
       <%= f.label :departure_airport_id, "From", class: "w-3/4 pt-9 text-3xl text-slate-600 text-left mb-3" %>
-      <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4" ) %>
+      <%= f.select(:departure_airport_id, options_for_select(@departure_airport_options), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4 focus:ring-0 focus:border-black" ) %>
       </div>
+      <%= image_tag "airplane-outline.svg", class: "h-8" %>
       <div class="flex flex-col flex-1 gap-2 h-full items-center">
       <%= f.label :destination_airport_id, "Destination", class: "w-3/4 pt-9 text-3xl text-slate-600 text-left mb-3" %>
-      <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4")%>
+      <%= f.select(:destination_airport_id, options_for_select(@arrival_airport_options), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4 focus:ring-0 focus:border-black")%>
       </div>
+      <%= image_tag "calendar.svg", class: "h-8" %>
       <div class="flex flex-col flex-1 gap-2 h-full items-center">
       <%= f.label :departure_date, "Departure Date", class: "w-3/4 pt-9 text-3xl text-slate-600 text-left mb-3"%>
-      <%= f.select :departure_date, options_for_select(@departure_date), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4"%>
+      <%= f.select :departure_date, options_for_select(@departure_date), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4 focus:ring-0 focus:border-black"%>
       </div>
       <%= f.submit "Search", class: "absolute -bottom-4 rounded-xl w-48 h-9 bg-gradient-to-r from-LIGHT_SKY to-DARK_INDIGO text-white text-2xl font-bold" %>
     <% end %>
