@@ -12,6 +12,12 @@ module.exports = {
       fontFamily: {
         sans: ['"Source Sans Pro"', 'sans-serif']
       },
+      colors: {
+        'DARK_OCEAN_BLUE': '#061424',
+        'LIGHT_OCEAN_BLUE': '#16467C',
+        'LIGHT_SKY': '#52AFFB',
+        'DARK_INDIGO': '#1A66F3'
+      }
     },
   },
   plugins: [
