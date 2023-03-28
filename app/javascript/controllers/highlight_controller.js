@@ -12,5 +12,14 @@ export default class extends Controller {
     this.removeHighlightFromOthers(label);
   }
 
+  removeHighlightFromOthers(label) {
+    // Using the for attribute (which is unique for every label) as a substitute for label's id.
+    const highlightedLabelId = label.getAttribute('for');
+    this.flightLabelTargets.forEach((flightLabel) => {
+      if (flightLabel.getAttribute('for') != highlightedLabelId) {
+        flightLabel.classList.remove('border-black', 'text-black', 'bg-slate-200');
+      }
+    })
 
+  }
 }
