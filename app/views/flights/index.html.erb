@@ -1,6 +1,6 @@
 <div class="flex flex-col h-screen">
   <section class="flex flex-col justify-between items-center  flex-auto h-3/4 bg-gradient-to-b from-DARK_OCEAN_BLUE to-LIGHT_OCEAN_BLUE">
-    <h1 class="mt-9 -ml-28 text-4xl font-sans self-center text-white">
+    <h1 class="mt-9 -ml-36 text-6xl font-sans self-center text-white">
     Flight
     <span class="relative">
       <span class="block absolute top-1 left-2 bg-rose-700 pr-1 rounded">
@@ -28,11 +28,16 @@
       <%= f.submit "Search", class: "absolute -bottom-4 rounded-xl w-48 h-9 bg-gradient-to-r from-LIGHT_SKY to-DARK_INDIGO text-white text-2xl font-bold" %>
     <% end %>
   </section>
-  <section class="h-2/4 flex-auto bg-gradient-to-b from-sky-200 to-sky-50">
+  <section class="h-2/4 flex-auto bg-white">
     <% if @available_flights.present? %>
       <%= form_with url: new_booking_path, method: :get do |f| %>
-        <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details%>
-        <%= f.submit "Select Flight"%>
+        <div data-controller="hello">
+            <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details do |b|%>
+              <%= b.label(class: "block rounded-lg my-8 ml-4 p-5 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3") %>
+              <%= b.radio_button(class: "flights hidden")%>
+            <% end %>
+            <%= f.submit "Select Flight"%>
+        </div>
       <% end %>
     <% end %>
   </section>
