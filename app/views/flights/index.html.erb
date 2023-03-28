@@ -31,10 +31,10 @@
   <section class="h-2/4 flex-auto bg-white">
     <% if @available_flights.present? %>
       <%= form_with url: new_booking_path, method: :get do |f| %>
-        <div data-controller="hello">
+        <div data-controller="highlight" data-highlight-target="availableFlightsCont">
             <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details do |b|%>
-              <%= b.label(class: "block rounded-lg my-8 ml-4 p-5 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3") %>
-              <%= b.radio_button(class: "flights hidden")%>
+              <%= b.label(class: "block rounded-lg my-8 ml-4 p-5 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3", data: {highlightTarget: 'flightLabel'}) %>
+              <%= b.radio_button(class: "hidden", data: {highlightTarget: 'checkbox', action: 'click -> highlight#highlight'})%>
             <% end %>
             <%= f.submit "Select Flight"%>
         </div>
