@@ -8,7 +8,7 @@ export default class extends Controller {
 
   highlight(e) {
     const label = e.target.labels[0];
-    label.classList.add('border-black', 'text-black', 'bg-slate-200');
+    label.classList.add('!border-black', '!text-black', '!bg-gradient-to-r', '!from-blue-200', '!to-blue-300');
     this.removeHighlightFromOthers(label);
   }
 
@@ -17,9 +17,8 @@ export default class extends Controller {
     const highlightedLabelId = label.getAttribute('for');
     this.flightLabelTargets.forEach((flightLabel) => {
       if (flightLabel.getAttribute('for') != highlightedLabelId) {
-        flightLabel.classList.remove('border-black', 'text-black', 'bg-slate-200');
+        flightLabel.classList.remove('!border-black', '!text-black', '!bg-gradient-to-r', '!from-blue-200', '!to-blue-300');
       }
     })
-
   }
 }
