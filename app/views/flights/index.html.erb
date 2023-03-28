@@ -34,7 +34,7 @@
         <div data-controller="highlight" data-highlight-target="availableFlightsCont" class="relative flex flex-col items-center pt-8">
             <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details do |b|%>
               <%= b.label(class: "block rounded-lg mb-8 ml-4 p-2 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3 bg-white", data: { 'highlight-target': 'flightLabel' }) %>
-              <%= b.radio_button(class: "hidden", data: { action: 'click -> highlight#highlight' })%>
+              <%= b.radio_button(class: "hidden", data: { action: 'click -> highlight#highlight' }, aria: {label: 'hidden'}) %>
             <% end %>
             <%= f.submit "Select Flight", class: "rounded-lg bg-rose-700 h-9 w-48 text-white text-2xl font-bold cursor-pointer" %>
         </div>
