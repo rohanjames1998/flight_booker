@@ -36,7 +36,7 @@
               <%= b.label(class: "block rounded-lg mb-8 ml-4 p-2 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3 bg-white", data: { 'highlight-target': 'flightLabel' }) %>
               <%= b.radio_button(class: "hidden", data: { action: 'click -> highlight#highlight' })%>
             <% end %>
-            <%= f.submit "Select Flight", class: "rounded-lg bg-rose-700 h-9 w-48 text-white text-2xl font-bold" %>
+            <%= f.submit "Select Flight", class: "rounded-lg bg-rose-700 h-9 w-48 text-white text-2xl font-bold cursor-pointer" %>
         </div>
       <% end %>
     <% end %>
