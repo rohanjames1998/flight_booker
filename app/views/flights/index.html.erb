@@ -1,5 +1,5 @@
-<div class="flex flex-col h-screen">
-  <section class="flex flex-col justify-between items-center  flex-auto h-3/4 bg-gradient-to-b from-DARK_OCEAN_BLUE to-LIGHT_OCEAN_BLUE">
+<div class="flex flex-col h-screen bg-gradient-to-b from-DARK_OCEAN_BLUE to-LIGHT_OCEAN_BLUE">
+  <section class="flex flex-col justify-between items-center  flex-auto h-3/4 ">
     <h1 class="mt-9 -ml-36 text-6xl font-sans self-center text-white">
     Flight
     <span class="relative">
@@ -25,18 +25,18 @@
       <%= f.label :departure_date, "Departure Date", class: "w-3/4 pt-9 text-3xl text-slate-600 text-left mb-3"%>
       <%= f.select :departure_date, options_for_select(@departure_date), {}, class: "appearance-none pb-0 border-x-0 border-t-0 border-b-2 border-zinc-300 text-center w-3/4 focus:ring-0 focus:border-black"%>
       </div>
-      <%= f.submit "Search", class: "absolute -bottom-4 rounded-xl w-48 h-9 bg-gradient-to-r from-LIGHT_SKY to-DARK_INDIGO text-white text-2xl font-bold" %>
+      <%= f.submit "Search", class: "absolute -bottom-4 rounded-xl w-48 h-9 bg-gradient-to-r from-LIGHT_SKY to-DARK_INDIGO text-white text-2xl font-bold cursor-pointer active:text-black" %>
     <% end %>
   </section>
-  <section class="h-2/4 flex-auto bg-white">
+  <section class="h-2/4 flex-auto border-t-2 border-black">
     <% if @available_flights.present? %>
       <%= form_with url: new_booking_path, method: :get do |f| %>
-        <div data-controller="highlight" data-highlight-target="availableFlightsCont">
+        <div data-controller="highlight" data-highlight-target="availableFlightsCont" class="relative flex flex-col items-center pt-8">
             <%= f.collection_radio_buttons :flight_id, @available_flights, :id, :flight_details do |b|%>
-              <%= b.label(class: "block rounded-lg my-8 ml-4 p-5 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3", data: { 'highlight-target': 'flightLabel' }) %>
+              <%= b.label(class: "block rounded-lg mb-8 ml-4 p-2 text-2xl text-slate-800 tracking-wider cursor-pointer hover:border-black hover:text-black border-2 border-zinc-300 w-2/3 bg-white", data: { 'highlight-target': 'flightLabel' }) %>
               <%= b.radio_button(class: "hidden", data: { action: 'click -> highlight#highlight' })%>
             <% end %>
-            <%= f.submit "Select Flight"%>
+            <%= f.submit "Select Flight", class: "rounded-lg bg-rose-700 h-9 w-48 text-white text-2xl font-bold" %>
         </div>
       <% end %>
     <% end %>
