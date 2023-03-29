@@ -26,6 +26,17 @@
       <p class="font-bold text-2xl">FooBar Lines</p>
       <p class="text-2xl text-slate-600">FB | 4367</p>
       </div>
+      <div class="col-start-1">
+        <div>
+          <p class="font-bold text-xl"><%= @flight.departure_time.strftime("%H:%M")%></p>
+          <p class="font-bold"><%= @flight.departure_time.strftime("%a, %d %b %y")%> </p>
+        </div>
+        <div class="mt-1">
+          <p class="text-slate-600">Terminal <%= rand(1...10) %><%=('A'..'Z').to_a.sample%></p> <%# Random ternimal number generator %>
+          <p class="text-slate-600"><%= @flight.departure_airport.city_name %></p>
+        </div>
+      </div>
+    </div>
   </section>
 
 <section class="border-2 border-black flex-auto h-3/4">
