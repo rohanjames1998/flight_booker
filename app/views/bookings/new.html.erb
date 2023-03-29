@@ -11,16 +11,21 @@
   </div>
 <% end %>
 <div class="h-screen flex flex-col">
-  <section class="border-2 border-black h-2/4">
-    <div class="flex border-b-2 w-full h-16 items-center px-3">
-      <h1 class="flex-1 text-4xl font-bold"> Flight Details </h1>
+  <section class="flex flex-col border-2 border-black h-2/4">
+    <header class="flex border-b-2 w-full h-16 items-center px-3">
+      <h1 class="flex-1 text-4xl font-bold">Flight Details</h1>
       <span class="flex gap-10 items-center">
         <h2 class="text-3xl font-bold"><%= @flight.departure_airport.city_name %></h2>
         <%= image_tag "airplane-outline.svg", alt: 'airplane', class: "h-8" %>
         <h2 class="text-3xl font-bold"><%= @flight.arrival_airport.city_name %></h2>
       </span>
-    </div> 
-    <p> <%= @flight.flight_details  %> </p>
+    </header>
+    <div class="grid w-full grid-rows-2 grid-cols-6 flex-auto px-3">
+      <div class="flex col-span-2 items-center gap-2">
+      <%= image_tag "globe-outline.svg", alt: 'company-logo', class: "h-12"%>
+      <p class="font-bold text-2xl">FooBar Lines</p>
+      <p class="text-2xl text-slate-600">FB | 4367</p>
+      </div>
   </section>
 
 <section class="border-2 border-black flex-auto h-3/4">
