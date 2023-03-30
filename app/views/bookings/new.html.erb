@@ -11,7 +11,7 @@
   </div>
 <% end %>
 <div class="h-screen flex flex-col">
-  <section class="flex flex-col border-2 border-black h-2/4">
+  <section class="flex flex-col border-b-2 border-black h-2/4">
     <header class="flex border-b-2 w-full h-16 items-center px-3">
       <h1 class="flex-1 text-4xl font-bold">Flight Details</h1>
       <span class="flex gap-10 items-center">
@@ -63,31 +63,32 @@
     </div>
   </section>
 
-<section class="border-2 border-black flex-auto h-3/4">
-<h1>Passenger Details</h1>
-  <p> Please enter details for each passenger </p>
+  <section class="flex-auto h-3/4">
+    <div class="border-b-2 p-3 h-16">
+      <h1 class="text-3xl font-bold">Passenger Details</h1>
+    </div>
 
-<%= form_with model: @booking do |f| %>
-  <%= f.hidden_field :flight_id, value: @flight.id %>
-  <div data-controller="passenger" data-passenger-target="parentDiv" id="parent-div">
-    <div data-passenger-target="passengerAdditionWarning"></div>
-    <div data-passenger-target="passengerRemovalWarning"></div>
-    <template data-passenger-target="passengerForm">
-      <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
-        <%= field_set_tag "Passenger details" do%>
-          <%= passenger_f.label :name %>
-          <%= passenger_f.text_field :name %>
-          <%= passenger_f.label :email %>
-          <%= passenger_f.text_field :email %>
-          <%= passenger_f.hidden_field :_destroy%>
-          <%= button_tag "Remove Passenger", type: "button", data: { action: "passenger#removePassenger" }%>
-        <% end %>
-      <% end %>
-    </template> <br>
-    <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }%>
-  </div>
-  <br />
-    <%= f.submit "Submit Details" %>
-<% end %>
-</section>
+    <%= form_with model: @booking do |f| %>
+      <%= f.hidden_field :flight_id, value: @flight.id %>
+      <div data-controller="passenger" data-passenger-target="parentDiv" id="parent-div">
+        <div data-passenger-target="passengerAdditionWarning"></div>
+        <div data-passenger-target="passengerRemovalWarning"></div>
+        <template data-passenger-target="passengerForm">
+          <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
+            <%= field_set_tag "Passenger details" do%>
+              <%= passenger_f.label :name %>
+              <%= passenger_f.text_field :name %>
+              <%= passenger_f.label :email %>
+              <%= passenger_f.text_field :email %>
+              <%= passenger_f.hidden_field :_destroy%>
+              <%= button_tag "Remove Passenger", type: "button", data: { action: "passenger#removePassenger" }%>
+            <% end %>
+          <% end %>
+        </template> <br>
+        <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }%>
+      </div>
+      <br />
+        <%= f.submit "Submit Details" %>
+    <% end %>
+  </section>
 </div>
