@@ -36,6 +36,30 @@
           <p class="text-slate-600"><%= @flight.departure_airport.city_name %></p>
         </div>
       </div>
+      <div class="flex flex-col items-center gap-1">
+        <p class="tracking-wider text-center"><%= @flight.duration %></p>
+        <span class="bg-green-300 w-24 rounded h-1"></span>
+      </div>
+      <div class="pl-3">
+        <p class="font-bold text-xl"><%= @flight.arrival_time.strftime("%H:%M")%></p>
+        <p class="font-bold"><%= @flight.arrival_time.strftime("%a, %d %b %y")%> </p>
+        <div class="mt-1">
+          <p class="text-slate-600">Terminal <%= rand(1...10) %><%=('A'..'Z').to_a.sample%></p> <%# Random ternimal number generator %>
+          <p class="text-slate-600"><%= @flight.arrival_airport.city_name %></p>
+        </div>
+      </div>
+      <div>
+        <p class="font-bold text-l">BAGGAGE:</p>
+        <p class="text-slate-600">ADULT</p>
+      </div>
+      <div>
+        <p class="font-bold text-l">CHECK IN</p>
+        <p class="text-slate-600">15 Kgs</p>
+      </div>
+      <div>
+        <p class="font-bold text-l">CABIN</p>
+        <p class="text-slate-600">7 Kgs</p>
+      </div>
     </div>
   </section>
 
