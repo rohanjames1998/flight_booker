@@ -11,7 +11,7 @@
   </div>
 <% end %>
 <div class="h-screen flex flex-col">
-  <section class="flex flex-col border-b-2 border-black h-2/4">
+  <section class="flex flex-col border-b-2 border-dashed border-black h-2/4 pb-4">
     <header class="flex border-b-2 w-full h-16 items-center px-3">
       <h1 class="flex-1 text-4xl font-bold">Flight Details</h1>
       <span class="flex gap-10 items-center">
@@ -65,17 +65,18 @@
 
   <section class="flex-auto h-3/4">
     <div class="border-b-2 p-3 h-16">
-      <h1 class="text-3xl font-bold">Passenger Details</h1>
+      <h1 class="text-4xl font-bold">Passenger Details</h1>
     </div>
 
     <%= form_with model: @booking do |f| %>
       <%= f.hidden_field :flight_id, value: @flight.id %>
-      <div data-controller="passenger" data-passenger-target="parentDiv" id="parent-div">
+      <div data-controller="passenger" data-passenger-target="parentDiv" id="parent-div"
+      class="border-2 border-black flex flex-col p-3 justify-content w-2/3 bg-slate-300">
         <div data-passenger-target="passengerAdditionWarning"></div>
         <div data-passenger-target="passengerRemovalWarning"></div>
-        <template data-passenger-target="passengerForm">
+        <template data-passenger-target="passengerForm" class="order-1">
           <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
-            <%= field_set_tag "Passenger details" do%>
+            <%= field_set_tag do%>
               <%= passenger_f.label :name %>
               <%= passenger_f.text_field :name %>
               <%= passenger_f.label :email %>
@@ -84,11 +85,12 @@
               <%= button_tag "Remove Passenger", type: "button", data: { action: "passenger#removePassenger" }%>
             <% end %>
           <% end %>
-        </template> <br>
-        <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }%>
+        </template>
+        <div class="order-2">
+          <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }, class:""%>
+          <%= f.submit "Submit Details", class: "" %>
+        </div>
       </div>
-      <br />
-        <%= f.submit "Submit Details" %>
     <% end %>
   </section>
 </div>
