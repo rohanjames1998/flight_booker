@@ -71,24 +71,28 @@
     <%= form_with model: @booking do |f| %>
       <%= f.hidden_field :flight_id, value: @flight.id %>
       <div data-controller="passenger" data-passenger-target="parentDiv" id="parent-div"
-      class="border-2 border-black flex flex-col p-3 justify-content w-2/3 bg-slate-300">
+      class="border-2 border-black flex flex-col p-3 justify-content w-2/3">
         <div data-passenger-target="passengerAdditionWarning"></div>
         <div data-passenger-target="passengerRemovalWarning"></div>
         <template data-passenger-target="passengerForm" class="order-1">
           <%= f.fields_for :passengers, @booking.passengers.build, child_index: 'PASSENGER_RECORD' do |passenger_f|%>
-            <%= field_set_tag do%>
-              <%= passenger_f.label :name %>
-              <%= passenger_f.text_field :name %>
-              <%= passenger_f.label :email %>
-              <%= passenger_f.text_field :email %>
+            <%= field_set_tag "", class: "flex gap-10" do%>
+              <div class="flex flex-col gap-2">
+                <%= passenger_f.label :name %>
+                <%= passenger_f.text_field :name, class:"appearance-none border-1 p-1 rounded" %>
+              </div>
+              <div class="flex flex-col gap-2">
+                <%= passenger_f.label :email  %>
+                <%= passenger_f.text_field :email, class:"appearance-none border-1 p-1 rounded" %>
+              </div>
               <%= passenger_f.hidden_field :_destroy%>
               <%= button_tag "Remove Passenger", type: "button", data: { action: "passenger#removePassenger" }%>
             <% end %>
           <% end %>
         </template>
-        <div class="order-2">
-          <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }, class:""%>
-          <%= f.submit "Submit Details", class: "" %>
+        <div class="flex gap-32 order-2 mt-5">
+          <%= button_tag "Add Passenger", type: "button", data: { action: "passenger#addPassenger" }, class:"bg-slate-400 py-2 px-4 rounded text-xl font-bold text-white"%>
+          <%= f.submit "Submit Details" %>
         </div>
       </div>
     <% end %>
