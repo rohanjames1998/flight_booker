@@ -18,7 +18,7 @@ export default class extends Controller {
     const passenger = e.target.closest("fieldset");
     if ( this.visiblePassengerFields() > 1){
       passenger.querySelector("input[name*='_destroy']").value = 1
-      passenger.hidden = true;
+      passenger.classList.add('hidden');
       this.passengerRemovalWarningTarget.textContent = ""
     }
     else {
@@ -27,7 +27,7 @@ export default class extends Controller {
   }
 
   visiblePassengerFields() {
-   const visibleFields = Array.from(document.querySelectorAll('fieldset')).filter(s =>
+    const visibleFields = Array.from(document.querySelectorAll('fieldset')).filter(s =>
       window.getComputedStyle(s).getPropertyValue('display') != 'none');
       return visibleFields.length
   }
