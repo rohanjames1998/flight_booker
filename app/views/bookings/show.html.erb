@@ -3,9 +3,52 @@
       <%= image_tag "globe-outline.svg", alt: 'company-logo', class: "h-20"%>
     <h1 class="text-4xl font-bold text-slate-900">FooBar Lines</h1>
   </header>
-    <section class="flex flex-col justify-center items-center p-2 gap-2">
+    <section class="flex flex-col justify-center items-center p-2 gap-2 my-5">
     <p class="text-4xl text-slate-900">Thank you for choosing FooBar Lines.</p>
     <p class="text-2xl text-slate-900">Your reservation is confirmed.</p>
+  </section>
+  <section class="flex flex-col gap-3 items-center">
+    <%= @booking.passengers.each_with_index do |passenger, index| %>
+      <div class="grid border-2 grid-cols-[3fr_1fr] grid-rows-3 p-4 w-2/4">
+        <div class="leading-7">
+          <p>Passenger <%= index + 1%>: <span class="font-bold"><%= passenger.name%></span> </p>
+          <p> <%= @booking.flight.departure_airport.city_name%>(<%= @booking.flight.departure_airport.code_name %>) to <%= @booking.flight.arrival_airport.city_name%> (<%= @booking.flight.arrival_airport.code_name %>)</p>
+        </div>
+        <div class="row-span-2 col-start-1 p-2 flex gap-28">
+          <div>
+            <p>Departs</p>
+            <p><%= @booking.flight.departure_airport.city_name %> (<%= @booking.flight.departure_airport.code_name %>)</p>
+            <span class="font-bold"><%= @booking.flight.departure_time.strftime("%l:%M %p") %></span>
+          </div>
+          <div>
+            <p>Arrives</p>
+            <p><%= @booking.flight.arrival_airport.city_name%> (<%= @booking.flight.arrival_airport.code_name%>)</p>
+            <span class="font-bold"><%= @booking.flight.arrival_time.strftime("%l:%M %p")%></span>
+          </div>
+        </div>
+        <div class="row-start-1 col-start-2 flex items-center gap-2">
+            <%= image_tag "globe-outline.svg", alt: 'company-logo', class: "h-8"%>
+          <div>
+            <p>Seat Assignment</p>
+            <span class="font-bold"><%= rand(10...50) %><%=('A'..'Z').to_a.sample%></span> <%# Random seat number generator %>
+          </div>
+        </div>
+        <div class="row-start-2 col-start-2 flex items-center gap-2">
+          <%= image_tag "globe-outline.svg", alt: 'company-logo', class: "h-8"%>
+          <div>
+            <p>Travel Time</p>
+            <span class="font-bold"><%= @booking.flight.duration%> </span>
+          </div>
+        </div>
+        <div class="row-start-3 col-start-2 flex items-center gap-2">
+          <%= image_tag "airplane-outline.svg", alt: 'airplane', class: "h-8"%>
+          <div>
+            <p>Aircraft</p>
+            <span class="font-bold">Boing 737-900</span>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </section>
 </main>
 
