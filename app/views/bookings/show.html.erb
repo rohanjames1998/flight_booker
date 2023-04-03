@@ -8,8 +8,8 @@
     <p class="text-2xl text-slate-900">Your reservation is confirmed.</p>
   </section>
   <section class="flex flex-col gap-3 items-center">
-    <%= @booking.passengers.each_with_index do |passenger, index| %>
-      <div class="grid border-b-8 border-indigo-800 shadow rounded shadow-black grid-cols-[3fr_1fr] grid-rows-3 p-4 w-2/4">
+    <% @booking.passengers.each_with_index do |passenger, index| %>
+      <div class="grid border-b-8 border-indigo-800 shadow rounded shadow-black grid-cols-[3fr_1fr] grid-rows-3 p-4 w-2/4 relative">
         <div class="leading-7">
           <p>Passenger <%= index + 1%>: <span class="font-bold"><%= passenger.name%></span> </p>
           <p> <%= @booking.flight.departure_airport.city_name%>(<%= @booking.flight.departure_airport.code_name %>) to <%= @booking.flight.arrival_airport.city_name%> (<%= @booking.flight.arrival_airport.code_name %>)</p>
@@ -47,6 +47,10 @@
             <span class="font-bold">Boing 737-900</span>
           </div>
         </div>
+        <span class="absolute rounded-sm -left-16 w-16 h-16 bg-indigo-800 text-center flex flex-col">
+          <span class="font-bold text-white"><%= @booking.flight.departure_time.strftime("%^b")%></span>
+          <span class="font-bold text-white text-2xl"><%= @booking.flight.departure_time.strftime("%d") %></span>
+        </span>
       </div>
     <% end %>
   </section>
