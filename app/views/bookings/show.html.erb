@@ -9,7 +9,7 @@
   </section>
   <section class="flex flex-col gap-3 items-center">
     <%= @booking.passengers.each_with_index do |passenger, index| %>
-      <div class="grid border-2 grid-cols-[3fr_1fr] grid-rows-3 p-4 w-2/4">
+      <div class="grid border-b-8 border-indigo-800 shadow rounded shadow-black grid-cols-[3fr_1fr] grid-rows-3 p-4 w-2/4">
         <div class="leading-7">
           <p>Passenger <%= index + 1%>: <span class="font-bold"><%= passenger.name%></span> </p>
           <p> <%= @booking.flight.departure_airport.city_name%>(<%= @booking.flight.departure_airport.code_name %>) to <%= @booking.flight.arrival_airport.city_name%> (<%= @booking.flight.arrival_airport.code_name %>)</p>
@@ -27,14 +27,14 @@
           </div>
         </div>
         <div class="row-start-1 col-start-2 flex items-center gap-2">
-            <%= image_tag "globe-outline.svg", alt: 'company-logo', class: "h-8"%>
+            <%= image_tag "airline-seat.svg", alt: 'company-logo', class: "h-8"%>
           <div>
             <p>Seat Assignment</p>
             <span class="font-bold"><%= rand(10...50) %><%=('A'..'Z').to_a.sample%></span> <%# Random seat number generator %>
           </div>
         </div>
         <div class="row-start-2 col-start-2 flex items-center gap-2">
-          <%= image_tag "globe-outline.svg", alt: 'company-logo', class: "h-8"%>
+          <%= image_tag "alarm-outline.svg", alt: 'company-logo', class: "h-8"%>
           <div>
             <p>Travel Time</p>
             <span class="font-bold"><%= @booking.flight.duration%> </span>
