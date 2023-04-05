@@ -9,6 +9,10 @@ class BookingsController < ApplicationController
     @flight = Flight.find(params[:booking][:flight_id])
 
     if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(passenger: passenger, arrival_airport: @flight.arrival_airport.city_name).confirmation_email.deliver_later!
+      end
+
       redirect_to booking_path(@booking)
     else
       #Passing flight id to display flight details when page reloads.
