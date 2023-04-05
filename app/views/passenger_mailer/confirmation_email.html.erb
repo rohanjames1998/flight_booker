@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<h1>You Flight to <%= @arrival_airport %> has been confirmed </h1>
+  <p>
+    If you want to view your complete booking please follow the link below:
+    <%= url_for  booking_url(@passenger.booking, host: 'localhost:3000') %>
+  </p>
+</body>
+</html>
